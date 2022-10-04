@@ -1,0 +1,450 @@
+@font-face {
+  font-family: 'poppinsbold';
+  src: url('../fonts/SVN-POPPINS-BOLD.TTF');
+}
+@font-face {
+  font-family: 'poppinslight';
+  src: url('../fonts/SVN-POPPINS-LIGHT.TTF');
+}
+@font-face {
+  font-family: 'poppins';
+  src: url('../fonts/SVN-POPPINS-REGULAR.TTF');
+}
+@font-face {
+  font-family: 'poppinsmedium';
+  src: url('../fonts/SVN-POPPINSMEDIUM.TTF');
+}
+
+@import './variables';
+@import './mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: $colorWrite;
+  text-decoration: none;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  @include width(100%);
+}
+
+.container {
+  max-width: 1179px;
+  margin: 0 auto;
+}
+
+html {
+  font-family: 'poppins';
+}
+
+body {
+  background-image: url('../img/bg-main.png');
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: $heightHeader;
+  color: $colorWrite;
+  font-size: 16px;
+  @include bgc($bgcMain);
+  transition: all 0.5s linear;
+
+  .menu-mobile {
+    @include minWidth(992px) {
+      display: none;
+    }
+    @include maxWidth(992px) {
+      margin: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: $heightHeader;
+
+      .icon-menu {
+        font-size: 17px;
+      }
+
+      .logo {
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .wrapper {
+    height: $heightHeader;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $colorBorderBottomHeader;
+    position: relative;
+
+    @include minWidth(992px) {
+      margin: 0 15px;
+    }
+
+    .logo-1 {
+      height: 30px;
+      @include maxWidth(992px) {
+        display: none;
+      }
+    }
+
+    .logo-2 {
+      display: none;
+    }
+
+    ul {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      margin-right: calc(49px - 39px);
+
+      li {
+        margin-right: 37px;
+
+        a {
+          font-weight: 500;
+
+          &:hover {
+            color: $colorHover;
+          }
+        }
+
+        @include maxWidth(1080px) {
+          margin-right: 20px;
+        }
+      }
+    }
+
+    .number {
+      display: flex;
+      align-items: center;
+      border: 1px solid $colorBorder;
+      border-radius: 20px;
+      height: 37px;
+      padding: 0 26px 0 22px;
+
+      .icon {
+        margin-right: 11px;
+      }
+    }
+
+    @include maxWidth(992px) {
+      position: fixed;
+      height: 100%;
+      width: 40%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: $colorWrite;
+      z-index: 1;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transform: translateX(-101%);
+      transition: all 0.5s linear;
+
+      &.active {
+        transform: translateX(0);
+      }
+
+      ul {
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+
+        li {
+          padding: 10px 15px;
+          margin-right: 0;
+
+          a {
+            color: $bgcMain;
+          }
+
+          &:not(:first-child) {
+            border-top: 1px solid $colorBorderLine;
+          }
+        }
+      }
+
+      .number {
+        margin: 0 0 15px 15px;
+        color: $bgcMain;
+        border-color: $colorBorder;
+      }
+    }
+
+    @include maxWidth(576px) {
+      width: 70%;
+    }
+  }
+
+  &.active {
+    @include bgc($colorWrite);
+    color: $bgcMain;
+    .logo-1 {
+      display: none;
+    }
+    .logo-2 {
+      display: block;
+    }
+
+    .wrapper ul li a {
+      color: $bgcMain;
+      font-weight: 800;
+    }
+
+    .number {
+      font-weight: 800;
+    }
+  }
+}
+
+.content {
+  margin-top: $heightHeader;
+
+  .banner {
+    background: url('../img/bgslider.png') no-repeat;
+    background-size: 100%;
+    @include width(100%, 697px);
+    @include maxWidth(992px) {
+      @include width(100%);
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      @include maxWidth(1179px) {
+        margin: 0 15px;
+      }
+
+      .info {
+        color: $colorWrite;
+
+        .name {
+          font-family: 'poppinsbold';
+          font-size: 33.24px;
+        }
+
+        .title {
+          margin-top: 20px;
+          font-size: 28.32px;
+          color: $colorBorder;
+        }
+
+        .desc {
+          margin-top: 43px;
+          font-size: 16px;
+          max-width: 368px;
+        }
+
+        .social {
+          margin-top: 121px;
+
+          .social-block {
+            display: flex;
+
+            .item {
+              margin: 20px 10px 0 0;
+              @include width(37px);
+            }
+          }
+        }
+      }
+
+      .avt {
+        margin-top: 67px;
+        position: relative;
+
+        .avt-img {
+          @include width(494px);
+          border-radius: $borderRadiusCircle;
+          overflow: hidden;
+          box-shadow: 0 0 10px rgba(225, 225, 225, 0.9);
+
+          @include maxWidth(578px) {
+            @include width(290px);
+          }
+        }
+
+        .maxim {
+          position: absolute;
+          left: -230px;
+          bottom: 0;
+          @include width(295px);
+          @include bgc($colorMaxim);
+          color: $colorWrite;
+          border-radius: $borderRadiusCircle;
+          padding: 38px 45px 0;
+
+          .icon {
+            margin: 0 auto 22px;
+            @include width(67px, 50px);
+          }
+
+          .text {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 19px;
+          }
+
+          @include maxWidth(992px) {
+            display: none;
+          }
+        }
+      }
+
+      @include maxWidth(992px) {
+        flex-direction: column-reverse;
+
+        .info {
+          margin-top: 30px;
+          text-align: center;
+
+          .name {
+            font-size: 28px;
+          }
+
+          .title {
+            margin-top: 10px;
+            font-size: 22px;
+          }
+
+          .desc {
+            margin-top: 20px;
+            font-size: 14px;
+          }
+
+          .social {
+            margin-top: 60px;
+
+            .social-block {
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+
+    .question {
+      color: $colorWrite;
+      font-size: 29.18px;
+      font-family: 'poppinsbold';
+      text-align: center;
+      margin-top: 100px;
+
+      @include maxWidth(992px) {
+        font-size: 24px;
+      }
+
+      @include maxWidth(578px) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .info-author {
+    margin: 52px 0;
+    .wrapper {
+      display: flex;
+      color: $colorWrite;
+
+      .info-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-image: linear-gradient(#13255d, #091333);
+        border-radius: $borderRadius;
+        padding: 40px 30px;
+        height: 323px;
+
+        &:not(:last-child) {
+          margin-right: 33px;
+        }
+
+        .logo {
+          @include width(57px);
+
+          img {
+            color: red;
+          }
+        }
+
+        .title {
+          font-size: 20px;
+          font-family: 'poppinsbold';
+        }
+
+        .desc {
+          font-size: 15px;
+          font-family: 'poppins';
+          margin-top: 14px;
+        }
+
+        .show-details a {
+          font-size: 15px;
+          font-family: 'poppins';
+          color: $colorHover;
+        }
+      }
+
+      @include maxWidth(992px) {
+        margin: 0 15px;
+        flex-direction: column;
+
+        .info-item {
+          &:not(:first-child) {
+            margin-top: 15px;
+          }
+
+          &:not(:last-child) {
+            margin-right: 0;
+          }
+
+          .title {
+            margin-top: 20px;
+          }
+          .show-details {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s linear;
+  @include bgc(rgba(0, 0, 0, 0.5));
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
