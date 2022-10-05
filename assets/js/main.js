@@ -55,9 +55,9 @@ $('.blog .slider').owlCarousel({
 $('.slider-for').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
+  adaptiveWidth: true,
   arrows: false,
   fade: true,
-  variableWidth: true,
   asNavFor: '.slider-nav',
 });
 
@@ -65,7 +65,17 @@ $('.slider-nav').slick({
   slidesToShow: 3,
   slidesToScroll: 1,
   asNavFor: '.slider-for',
+  adaptiveWidth: true,
   dots: false,
   centerMode: true,
   focusOnSelect: true,
+  centerPadding: 0,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
 });

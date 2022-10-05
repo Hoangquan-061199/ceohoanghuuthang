@@ -95,8 +95,8 @@ body {
     border-bottom: 1px solid $colorBorderBottomHeader;
     position: relative;
 
-    @include minWidth(992px) {
-      margin: 0 15px;
+    @include toWidth(992px, 1200px) {
+      padding: 0 15px;
     }
 
     .logo-1 {
@@ -221,9 +221,8 @@ body {
   margin-top: $heightHeader;
 
   .banner {
-    background: url('../img/bgslider.png') no-repeat;
+    background: url('../img/bgc-banner.png') no-repeat;
     background-size: 100% 90%;
-    background-position: bottom;
     @include width(100%, 697px);
     @include maxWidth(992px) {
       @include width(100%);
@@ -283,6 +282,19 @@ body {
 
           @include maxWidth(578px) {
             @include width(290px);
+          }
+
+          img {
+            object-fit: none;
+            width: auto;
+            height: auto;
+            transform: translateX(-20%);
+
+            @include maxWidth(578px) {
+              @include width(100%);
+              transform: translateX(0);
+              object-fit: cover;
+            }
           }
         }
 
@@ -364,7 +376,13 @@ body {
     .wrapper {
       display: flex;
       color: $colorWrite;
-      margin: 0 15px;
+      @include maxWidth(992px) {
+        margin: 0 15px;
+      }
+
+      @include toWidth(992px, 1200px) {
+        margin: 0 15px;
+      }
 
       .info-item {
         flex: 1;
@@ -602,6 +620,9 @@ body {
 
     .wrapper {
       margin: 0 15px;
+      @include minWidth(1200px) {
+        margin: 0;
+      }
 
       & > .title {
         text-align: center;
@@ -790,102 +811,124 @@ body {
     }
   }
 
-  .news {
-    max-height: 630px;
-    color: $colorWrite;
+  .news-intro {
+    background: url('../img/bg-map.png') no-repeat bottom,
+      url('../img/bgc-news.png') no-repeat top;
+    background-size: 80% 50%, 100% 110%;
 
-    h2 {
-      @include font(29.18px, 'poppinsbold');
-      margin: 70px 0 49px;
-      text-align: center;
-    }
-
-    .main {
-    }
-
-    .slider.slider-nav {
-      .item {
-        @include width(139px, 76px);
-        @include bgc($colorWrite);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: $borderRadius;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
-
-        img {
-          @include width(103px, 28px);
-        }
-      }
-    }
-  }
-
-  .intro {
-    .wrapper {
-      display: grid;
-      grid-template-columns: repeat(2, 50%);
-      background: url('../img/bg-map.png') no-repeat;
-      background-size: 100% 100%;
-      margin: 0 15px;
+    .news {
+      height: 630px;
       color: $colorWrite;
-      padding: 71px 0;
+      clear: both;
 
-      .img {
-        @include width(330px);
-        margin: auto;
-
-        @include maxWidth(850px) {
-          @include width(230px);
-        }
+      h2 {
+        @include font(29.18px, 'poppinsbold');
+        margin: 64px 0 46px;
+        text-align: center;
       }
 
-      .intro-text {
-        margin: auto;
+      .main {
+        display: flex;
+        flex-direction: column;
 
-        .block {
-          .text {
-            font-size: 19px;
-            margin-bottom: 8px;
+        .slider-nav {
+          width: 550px;
+          margin: 0 auto;
+          position: relative;
+
+          .slick-prev,
+          .slick-next {
+            @include width(30px);
           }
 
-          h1 {
-            text-transform: uppercase;
-            @include font(29.18px, 'poppinsbold');
-            margin-bottom: 28px;
+          .slick-prev {
+            left: -30px;
           }
 
-          p {
-            font-size: 15px;
-            margin-bottom: 42px;
+          .slick-next {
+            right: -30px;
           }
 
-          .btn {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
+          .slick-prev:before,
+          .slick-next:before {
+            color: $colorBtn2;
+          }
 
-            .btn-item {
-              height: $heightBtn;
-              line-height: $heightBtn;
-              padding: 0 23px 0 21px;
+          .slick-slide {
+            .item {
+              height: 76px;
+              margin: 0 6px;
+              @include bgc($colorWrite);
+              display: flex;
+              align-items: center;
+              justify-content: center;
               border-radius: $borderRadius;
-              transition: opacity 0.5s linear;
-              opacity: 1;
-              cursor: pointer;
 
-              &.show-details {
-                @include bgc($colorWrite);
-                color: $colorBtn;
-                margin-right: 10px;
+              img {
+                @include width(103px, 28px);
+              }
+            }
 
-                &:hover {
-                  opacity: 0.7;
-                }
+            &.slick-current.slick-active.slick-center {
+              .item {
+                border: 2px solid $colorBorder;
+              }
+            }
+          }
+
+          @include maxWidth(768px) {
+            width: 320px;
+          }
+
+          @include maxWidth(568px) {
+            width: 220px;
+          }
+        }
+
+        .slider-for {
+          height: 100%;
+          padding: 0 70px;
+
+          @include maxWidth(992px) {
+            padding: 0 15px;
+          }
+
+          .item {
+            position: relative;
+            display: grid;
+            grid-template-columns: calc(50% - 57px) 50%;
+            gap: 57px;
+            @include width(100%, 100%);
+            padding: 57px 47px 61px 36px;
+            margin-top: 22px;
+            @include bgc($colorWrite);
+            color: $colorText;
+            border-radius: $borderRadius;
+
+            .intro {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              h3 {
+                @include font(19px, 'poppinsbold');
+                margin-bottom: 22px;
               }
 
-              &.participate {
+              p {
+                font-size: 15px;
+                flex: 1;
+              }
+
+              .btn-show-news {
+                max-width: 144px;
+                padding: 11px 13px 13px 17px;
+                border-radius: $borderRadius;
                 @include bgc($colorBtn2);
                 color: $colorWrite;
+                cursor: pointer;
+                @include font(15px, 'poppinsbold');
+                opacity: 1;
+                transition: opacity 0.5s linear;
 
                 &:hover {
                   opacity: 0.7;
@@ -893,31 +936,155 @@ body {
               }
             }
 
-            @include maxWidth(400px) {
-              display: block;
-              .btn-item {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            &::before {
+              content: '';
+              position: absolute;
+              top: -12px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 29px;
+              height: 13px;
+              clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+              @include bgc($colorWrite);
+            }
 
-                .icon {
-                  margin-left: 10px;
-                }
+            @include maxWidth(992px) {
+              grid-template-columns: calc(60% - 30px) 40%;
+              gap: 30px;
 
-                &.show-details {
-                  margin-right: 0;
-                  margin-bottom: 15px;
+              .intro {
+                h3 {
+                  margin-bottom: 10px;
                 }
+                p {
+                  margin-bottom: 10px;
+                }
+              }
+            }
+
+            @include maxWidth(768px) {
+              grid-template-columns: 100%;
+              gap: 0;
+              padding: 20px;
+
+              .intro {
+                margin-bottom: 20px;
               }
             }
           }
         }
       }
+    }
 
-      @include maxWidth(768px) {
-        grid-template-columns: auto;
+    .intro {
+      .wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        margin: 0 15px;
+        color: $colorWrite;
+        padding: 71px 0;
+        @include maxWidth(768px) {
+          margin-top: 190px;
+        }
+
+        @include maxWidth(668px) {
+          margin-top: 150px;
+        }
+
+        @include maxWidth(500px) {
+          margin-top: 100px;
+        }
+
         .img {
-          display: none;
+          @include width(330px);
+          margin: auto;
+
+          @include maxWidth(850px) {
+            @include width(230px);
+          }
+        }
+
+        .intro-text {
+          margin: auto;
+
+          .block {
+            .text {
+              font-size: 19px;
+              margin-bottom: 8px;
+            }
+
+            h1 {
+              text-transform: uppercase;
+              @include font(29.18px, 'poppinsbold');
+              margin-bottom: 28px;
+            }
+
+            p {
+              font-size: 15px;
+              margin-bottom: 42px;
+            }
+
+            .btn {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              @include font(15px, 'poppinsbold');
+
+              .btn-item {
+                height: $heightBtn;
+                line-height: $heightBtn;
+                padding: 0 23px 0 21px;
+                border-radius: $borderRadius;
+                transition: opacity 0.5s linear;
+                opacity: 1;
+                cursor: pointer;
+
+                &.show-details {
+                  @include bgc($colorWrite);
+                  color: $colorBtn;
+                  margin-right: 10px;
+
+                  &:hover {
+                    opacity: 0.7;
+                  }
+                }
+
+                &.participate {
+                  @include bgc($colorBtn2);
+                  color: $colorWrite;
+
+                  &:hover {
+                    opacity: 0.7;
+                  }
+                }
+              }
+
+              @include maxWidth(400px) {
+                display: block;
+                .btn-item {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+
+                  .icon {
+                    margin-left: 10px;
+                  }
+
+                  &.show-details {
+                    margin-right: 0;
+                    margin-bottom: 15px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        @include maxWidth(768px) {
+          grid-template-columns: auto;
+          .img {
+            display: none;
+          }
         }
       }
     }

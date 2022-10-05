@@ -23,3 +23,9 @@
     @content;
   }
 }
+
+@mixin toWidth($minwidth, $maxwidth) {
+  @media (min-width: $minwidth) and (max-width: $maxwidth) {
+    @content;
+  }
+}
