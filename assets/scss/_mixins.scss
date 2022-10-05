@@ -2,6 +2,11 @@
   background-color: $bgcolor;
 }
 
+@mixin font($fontsize, $fontfamily) {
+  font-size: $fontsize;
+  font-family: $fontfamily;
+}
+
 @mixin width($width, $height: $width) {
   width: $width;
   height: $height;
