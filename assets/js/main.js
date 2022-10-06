@@ -30,6 +30,13 @@ $(window).scroll(() => {
   }
 });
 
+$('.action .icon.up').click(() => {
+  let body = $('html, body');
+  if (body.scrollTop() > 0) {
+    body.stop().animate({ scrollTop: 0 }, 500, 'swing');
+  }
+});
+
 $('.blog .slider').slick({
   slidesToShow: 3,
   slidesToScroll: 3,

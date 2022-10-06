@@ -52,7 +52,7 @@ body {
   height: $heightHeader;
   color: $colorWrite;
   font-size: 16px;
-  @include bgc($bgcMain);
+  @include bgc($bgcHeader);
   transition: all 0.5s linear;
 
   .menu-mobile {
@@ -129,6 +129,7 @@ body {
       display: flex;
       align-items: center;
       border: 1px solid $colorBorder;
+      color: $colorWrite;
       border-radius: 20px;
       height: 37px;
       padding: 0 26px 0 22px;
@@ -205,6 +206,7 @@ body {
 
     .number {
       font-weight: 800;
+      color: $bgcMain;
     }
   }
 }
@@ -213,8 +215,8 @@ body {
   margin-top: $heightHeader;
 
   .banner {
-    background: url('../img/bgc-banner.png') no-repeat;
-    background-size: 100% 90%;
+    background: url('../img/bgc-banner1.png') no-repeat;
+    background-size: 100% 100%;
     @include width(100%, 697px);
     @include maxWidth(992px) {
       @include width(100%);
@@ -445,27 +447,11 @@ body {
     background-size: 100% 100%;
     padding: 46px 15px;
     position: relative;
-    z-index: -1;
-
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      opacity: 0.9;
-      z-index: -3;
-      background-image: linear-gradient(#080e2e, rgba(0, 0, 0, 0.3), #080e2e);
-    }
 
     .wrapper {
       display: grid;
       grid-template-columns: repeat(2, calc(50% - 10px));
       gap: 20px;
-      position: relative;
-      z-index: -2;
       color: $colorWrite;
       @include maxWidth(992px) {
         grid-template-columns: auto;
@@ -818,9 +804,8 @@ body {
   }
 
   .news-intro {
-    background: url('../img/bg-map.png') no-repeat bottom,
-      url('../img/bgc-news.png') no-repeat top;
-    background-size: 80% 50%, 100% 110%;
+    background: url('../img/bgc-new-intro.png') no-repeat;
+    background-size: 100% 100%;
 
     .news {
       height: 630px;
@@ -1195,6 +1180,34 @@ body {
         grid-template-columns: auto;
         text-align: center;
       }
+    }
+  }
+}
+
+.action {
+  position: fixed;
+  bottom: 230px;
+  right: 22px;
+
+  .icon {
+    @include width(46px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $borderRadiusCircle;
+    @include bgc($colorIconPhone);
+    margin-bottom: 8px;
+
+    &.mail {
+      @include bgc($colorIconEmail);
+    }
+
+    &.up {
+      @include bgc($colorIconUp);
+    }
+
+    img {
+      @include width(auto);
     }
   }
 }
