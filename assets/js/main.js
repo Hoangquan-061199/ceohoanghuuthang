@@ -1,4 +1,5 @@
 const header = $('.header');
+const iconExit = $('.icon-exit');
 
 const overlayShow = () => {
   $('.overlay').addClass('active');
@@ -15,6 +16,11 @@ $('.overlay').click(() => {
 $('.menu-mobile .icon-menu').click(() => {
   $('.header .wrapper').addClass('active');
   overlayShow();
+});
+
+iconExit.click(() => {
+  overlayhidden();
+  $('.header .wrapper').removeClass('active');
 });
 
 $(window).scroll(() => {
@@ -61,6 +67,7 @@ $('.blog .slider').slick({
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        variableWidth: false,
       },
     },
   ],

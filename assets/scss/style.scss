@@ -67,7 +67,7 @@ body {
       height: $heightHeader;
 
       .icon-menu {
-        font-size: 17px;
+        font-size: 35px;
       }
 
       .logo {
@@ -178,14 +178,32 @@ body {
       }
 
       .number {
-        margin: 0 0 15px 15px;
+        margin: 15px auto;
         color: $bgcMain;
         border-color: $colorBorder;
+      }
+
+      .icon-exit {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+        color: $bgcMain;
+        text-align: center;
       }
     }
 
     @include maxWidth(576px) {
       width: 70%;
+    }
+
+    @include minWidth(992px) {
+      .icon-exit {
+        display: none;
+      }
     }
   }
 
@@ -360,7 +378,7 @@ body {
       }
 
       @include maxWidth(578px) {
-        font-size: 20px;
+        font-size: 16px;
       }
     }
   }
@@ -401,20 +419,34 @@ body {
         }
 
         .title {
-          font-size: 20px;
-          font-family: 'poppinsbold';
+          @include font(20px, 'poppinsbold');
+          margin-top: 34px;
         }
 
         .desc {
           font-size: 15px;
           font-family: 'poppins';
           margin-top: 14px;
+          height: 80px;
+          overflow: hidden;
         }
 
         .show-details a {
           font-size: 15px;
           font-family: 'poppins';
           color: $colorHover;
+        }
+
+        @include maxWidth(992px) {
+          .block {
+            display: grid;
+            grid-template-columns: 20% calc(80% - 30px);
+            gap: 30px;
+
+            .logo {
+              margin: 30px auto;
+            }
+          }
         }
       }
 
@@ -663,7 +695,7 @@ body {
               @include width(8px);
               padding: 0;
               background-color: $bgcMain;
-              border: 3px solid $colorBorder;
+              border: 2px solid $colorBorder;
               border-radius: $borderRadiusCircle;
 
               &::before {

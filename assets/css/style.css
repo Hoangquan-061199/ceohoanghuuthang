@@ -66,7 +66,7 @@ body {
     height: 91px;
   }
   .header .menu-mobile .icon-menu {
-    font-size: 17px;
+    font-size: 35px;
   }
   .header .menu-mobile .logo {
     height: 30px;
@@ -166,14 +166,30 @@ body {
     border-top: 1px solid #b2b2b2;
   }
   .header .wrapper .number {
-    margin: 0 0 15px 15px;
+    margin: 15px auto;
     color: #071840;
     border-color: #f7cb44;
+  }
+  .header .wrapper .icon-exit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    color: #071840;
+    text-align: center;
   }
 }
 @media (max-width: 576px) {
   .header .wrapper {
     width: 70%;
+  }
+}
+@media (min-width: 992px) {
+  .header .wrapper .icon-exit {
+    display: none;
   }
 }
 .header.active {
@@ -345,7 +361,7 @@ body {
 }
 @media (max-width: 578px) {
   .content .banner .question {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 .content .info-author {
@@ -388,16 +404,29 @@ body {
 .content .info-author .wrapper .info-item .title {
   font-size: 20px;
   font-family: "poppinsbold";
+  margin-top: 34px;
 }
 .content .info-author .wrapper .info-item .desc {
   font-size: 15px;
   font-family: "poppins";
   margin-top: 14px;
+  height: 80px;
+  overflow: hidden;
 }
 .content .info-author .wrapper .info-item .show-details a {
   font-size: 15px;
   font-family: "poppins";
   color: #f7ca44;
+}
+@media (max-width: 992px) {
+  .content .info-author .wrapper .info-item .block {
+    display: grid;
+    grid-template-columns: 20% calc(80% - 30px);
+    gap: 30px;
+  }
+  .content .info-author .wrapper .info-item .block .logo {
+    margin: 30px auto;
+  }
 }
 @media (max-width: 992px) {
   .content .info-author .wrapper {
@@ -631,7 +660,7 @@ body {
   height: 8px;
   padding: 0;
   background-color: #071840;
-  border: 3px solid #f7cb44;
+  border: 2px solid #f7cb44;
   border-radius: 50%;
 }
 .content .blog .wrapper .slider .slick-dots li button::before {
