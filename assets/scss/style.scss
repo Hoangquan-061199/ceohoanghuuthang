@@ -3,16 +3,8 @@
   src: url('../fonts/SVN-POPPINS-BOLD.TTF');
 }
 @font-face {
-  font-family: 'poppinslight';
-  src: url('../fonts/SVN-POPPINS-LIGHT.TTF');
-}
-@font-face {
   font-family: 'poppins';
   src: url('../fonts/SVN-POPPINS-REGULAR.TTF');
-}
-@font-face {
-  font-family: 'poppinsmedium';
-  src: url('../fonts/SVN-POPPINSMEDIUM.TTF');
 }
 
 @import './variables';
@@ -638,14 +630,20 @@ body {
       }
 
       .slider {
+        height: 424px;
+
+        @include maxWidth(600px) {
+          height: auto;
+        }
+
         .item {
+          width: 370px;
+          margin: 0 17px;
           overflow: hidden;
           @include bgc($colorItemSlide);
-          height: 424px;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-          @include maxWidth(600px) {
-            height: auto;
+          .img {
+            @include width(100%, 207px);
           }
 
           .item-block {
@@ -661,7 +659,7 @@ body {
 
             .desc {
               margin-bottom: 30px;
-              height: 41px;
+              height: 40px;
               overflow-y: hidden;
             }
 
@@ -671,24 +669,32 @@ body {
           }
         }
 
-        .owl-nav.disabled + .owl-dots {
-          margin-top: 34px;
+        .slick-dots {
+          bottom: -48px;
 
-          .owl-dot span {
-            @include width(9px);
-            background-color: $bgcMain;
-            border: 3px solid $colorBorder;
-          }
+          li {
+            button {
+              @include width(8px);
+              padding: 0;
+              background-color: $bgcMain;
+              border: 3px solid $colorBorder;
+              border-radius: $borderRadiusCircle;
 
-          .owl-dot.active span,
-          .owl-dot:hover span {
-            @include bgc($colorBorder);
+              &::before {
+                color: transparent;
+              }
+            }
+
+            &.slick-active {
+              button::before {
+                @include width(8px);
+                @include bgc($colorBorder);
+                border-radius: $borderRadiusCircle;
+                opacity: 1;
+              }
+            }
           }
         }
-      }
-
-      .owl-carousel {
-        z-index: 0;
       }
     }
   }

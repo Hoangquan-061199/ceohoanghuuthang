@@ -30,26 +30,33 @@ $(window).scroll(() => {
   }
 });
 
-$('.blog .slider').owlCarousel({
+$('.blog .slider').slick({
+  slidesToShow: 3,
+  slidesToScroll: 3,
   autoplay: true,
-  loop: true,
-  margin: 34,
-  nav: false,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 2,
-    },
-    900: {
-      items: 2.5,
-    },
-    1100: {
-      items: 3,
-    },
-  },
+  autoplaySpeed: 5000,
+  // centerMode: true,
+  centerPadding: 0,
+  nextArrow: false,
+  prevArrow: false,
+  variableWidth: true,
   dots: true,
+  responsive: [
+    {
+      breakpoint: 1100,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 });
 
 $('.slider-for').slick({
