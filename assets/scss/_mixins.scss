@@ -79,6 +79,7 @@
     @include font(14px, 'poppinsbold');
     @include width(170px, 36px);
     @include bgc($colorBtn2);
+    cursor: pointer;
 
     .icon-right {
       margin-left: 12px;

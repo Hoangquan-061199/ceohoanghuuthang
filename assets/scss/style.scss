@@ -1555,6 +1555,91 @@ body {
   }
 }
 
+//! nội dung trang media hình ảnh
+.content-media-image {
+  @include cssPathContent();
+
+  .media-image {
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      margin-bottom: 51px;
+      border-bottom: 1px solid $colorBorderBottomHeader;
+
+      li {
+        width: 124px;
+        a {
+          text-align: center;
+        }
+
+        &.active {
+          position: relative;
+
+          a {
+            color: $colorHover;
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -33px;
+            left: 0;
+            display: block;
+            @include width(100%, 20px);
+            background: url('../img/active-border.png') no-repeat;
+          }
+        }
+      }
+    }
+
+    .list-image {
+      ul {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        row-gap: 32px;
+        column-gap: 36px;
+
+        li {
+          @include bgc($bgcFooter);
+
+          .title {
+            padding: 23px 25px 16px;
+          }
+        }
+      }
+
+      @include maxWidth(1200px) {
+        margin: 0 15px;
+
+        ul {
+          gap: 15px;
+        }
+      }
+
+      @include maxWidth(768px) {
+        ul {
+          grid-template-columns: auto auto;
+        }
+      }
+
+      @include maxWidth(568px) {
+        ul {
+          grid-template-columns: auto;
+        }
+      }
+
+      @include cssBtn();
+
+      .btn {
+        margin: 36px auto 60px;
+        color: $colorWrite;
+      }
+    }
+  }
+}
+
 .footer {
   @include bgc($bgcFooter);
 
