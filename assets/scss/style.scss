@@ -108,14 +108,88 @@ body {
       justify-content: flex-end;
       margin-right: calc(49px - 39px);
 
-      li {
+      & > li {
         margin-right: 37px;
+        position: relative;
+        @include minWidth(992px) {
+          &:hover > a {
+            color: $colorHover;
+          }
+        }
 
         a {
           font-weight: 500;
+          @include minWidth(992px) {
+            .icon-down {
+              display: none;
+            }
+          }
+          @include maxWidth(992px) {
+            .icon-down {
+              float: right;
+              position: relative;
+
+              &::after {
+                content: '';
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                @include width(40px, 30px);
+              }
+            }
+          }
+        }
+
+        @include minWidth(992px) {
+          ul {
+            position: absolute;
+            top: 54px;
+            left: 0;
+            min-width: 207px;
+            display: flex;
+            flex-direction: column;
+            @include bgc($bgcMain);
+            border-top: 3px solid $colorBorder;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-10%);
+            transition: all 0.3s linear;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: -43px;
+              left: 0;
+              background-color: transparent;
+              width: 207px;
+              height: 45px;
+            }
+
+            li {
+              @include width(100%, 37px);
+              padding-left: 25px;
+              font-size: 15px;
+              line-height: 37px;
+
+              &:not(:first-child) {
+                border-top: 1px solid $colorBorderLine;
+              }
+            }
+          }
 
           &:hover {
-            color: $colorHover;
+            ul {
+              opacity: 1;
+              transform: translateY(0);
+              pointer-events: all;
+            }
+          }
+        }
+
+        @include maxWidth(992px) {
+          ul {
+            display: none;
           }
         }
 
@@ -149,7 +223,7 @@ body {
       flex-direction: column;
       align-items: flex-start;
       background-color: $colorWrite;
-      z-index: 1;
+      z-index: 10;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       transform: translateX(-101%);
       transition: all 0.5s linear;
@@ -163,7 +237,7 @@ body {
         justify-content: flex-start;
         width: 100%;
 
-        li {
+        & > li {
           padding: 10px 15px;
           margin-right: 0;
 
@@ -174,6 +248,10 @@ body {
           &:not(:first-child) {
             border-top: 1px solid $colorBorderLine;
           }
+
+          li {
+            padding-left: 10px;
+          }
         }
       }
 
@@ -182,28 +260,36 @@ body {
         color: $bgcMain;
         border-color: $colorBorder;
       }
-
-      .icon-exit {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: block;
-        width: 40px;
-        height: 40px;
-        font-size: 30px;
-        color: $bgcMain;
-        text-align: center;
-      }
     }
 
     @include maxWidth(576px) {
       width: 70%;
     }
+  }
+
+  .icon-exit {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    color: $bgcMain;
+    @include bgc($colorWrite);
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s linear;
+    z-index: 1;
 
     @include minWidth(992px) {
-      .icon-exit {
-        display: none;
-      }
+      display: none;
+    }
+
+    &.active {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
@@ -217,9 +303,28 @@ body {
       display: block;
     }
 
-    .wrapper ul li a {
-      color: $bgcMain;
-      font-weight: 800;
+    .wrapper ul {
+      & > li {
+        & > a {
+          color: $bgcMain;
+          font-weight: 800;
+        }
+
+        &:hover {
+          & > a {
+            color: $colorHover;
+          }
+        }
+
+        ul {
+          @include bgc($colorWrite);
+          li:hover {
+            a {
+              color: $colorHover;
+            }
+          }
+        }
+      }
     }
 
     .number {
@@ -228,6 +333,8 @@ body {
     }
   }
 }
+
+//! nội dung trang index.html
 
 .content {
   margin-top: $heightHeader;
@@ -1114,6 +1221,216 @@ body {
   }
 }
 
+//! nội dung trang liên hệ
+.content-contact {
+  margin-top: $heightHeader;
+
+  .banner {
+    background: url('../img/bgc-lienhe-banner.png') no-repeat;
+    background-size: 100% 100%;
+    height: 255px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: $colorWrite;
+    display: flex;
+    align-items: center;
+
+    .wrapper {
+      margin: auto;
+
+      h1 {
+        text-align: center;
+        @include font(33px, 'poppinsbold');
+        margin-bottom: 17px;
+      }
+
+      .path {
+        font-size: 14px;
+
+        span {
+          position: relative;
+          padding: 0 13px;
+          &:not(:first-child)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            @include width(1px, 100%);
+            @include bgc($colorBorderLine);
+          }
+        }
+      }
+    }
+  }
+
+  .contact {
+    color: $colorWrite;
+    background: url('../img/bgc-contact.png') no-repeat;
+    background-size: 100% 100%;
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 55.56% 44.44%;
+
+      .info {
+        flex: 1;
+        .block {
+          margin-top: 120px;
+          display: flex;
+          justify-content: space-between;
+
+          .name {
+            h3 {
+              @include font(27px, 'poppinsbold');
+              margin-bottom: 7px;
+            }
+            p {
+              font-size: 23px;
+              color: $colorBorder;
+              margin-bottom: 30px;
+            }
+          }
+          .social {
+            .social-block {
+              display: flex;
+              font-size: 15px;
+              margin-top: 12px;
+
+              .item {
+                @include width(37px);
+                margin-right: 11px;
+              }
+            }
+          }
+        }
+
+        .address {
+          .item {
+            display: flex;
+            font-size: 16px;
+            margin-bottom: 14px;
+
+            .icon {
+              @include width(18px);
+              margin-right: 12px;
+            }
+          }
+        }
+
+        .form-contact {
+          margin-top: 43px;
+          h3 {
+            margin-bottom: 22px;
+          }
+
+          .input-form {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 18px;
+
+            input {
+              height: 40px;
+              outline: none;
+              background: transparent;
+              border: 1px solid $colorBorderLine;
+              border-radius: $borderRadius;
+              color: $colorWrite;
+              padding-left: 18px;
+              @include font(15px, 'poppins');
+
+              &::placeholder {
+                color: $colorWrite;
+                @include font(15px, 'poppins');
+              }
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+          }
+
+          textarea {
+            display: block;
+            resize: none;
+            outline: none;
+            background: transparent;
+            @include font(15px, 'poppins');
+            @include width(100%, 112px);
+            border-radius: $borderRadius;
+            color: $colorWrite;
+            text-align: left;
+            border: 1px solid $colorBorderLine;
+            margin-top: 18px;
+            padding-left: 18px;
+            padding-top: 18px;
+
+            &::placeholder {
+              color: $colorWrite;
+              @include font(15px, 'poppins');
+            }
+          }
+
+          button {
+            margin-top: 15px;
+            color: $colorWrite;
+            border: none;
+            border-radius: $borderRadius;
+            @include font(15px, 'poppinsbold');
+            @include bgc($colorBtn2);
+            @include width(115px, 36px);
+
+            span {
+              margin-left: 18px;
+            }
+          }
+        }
+      }
+
+      .avatar {
+        padding-top: 51px;
+        img {
+          @include width(420px, 734px);
+          float: right;
+        }
+      }
+
+      @include maxWidth(992px) {
+        margin: 0 15px;
+        padding-bottom: 120px;
+        grid-template-columns: auto;
+
+        .avatar {
+          display: none;
+        }
+      }
+
+      @include maxWidth(568px) {
+        .info {
+          .block {
+            display: block;
+            margin-bottom: 20px;
+
+            .name {
+              h3 {
+                font-size: 20px;
+              }
+
+              p {
+                font-size: 18px;
+              }
+            }
+          }
+          .form-contact .input-form {
+            grid-template-columns: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
 .footer {
   @include bgc($bgcFooter);
 
@@ -1241,6 +1558,10 @@ body {
     img {
       @include width(auto);
     }
+  }
+
+  @include maxWidth(568px) {
+    bottom: 100px;
   }
 }
 

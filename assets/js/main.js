@@ -1,3 +1,4 @@
+const body = $('html, body');
 const header = $('.header');
 const iconExit = $('.icon-exit');
 
@@ -11,16 +12,19 @@ const overlayhidden = () => {
 $('.overlay').click(() => {
   overlayhidden();
   $('.header .wrapper').removeClass('active');
+  iconExit.removeClass('active');
 });
 
 $('.menu-mobile .icon-menu').click(() => {
   $('.header .wrapper').addClass('active');
+  iconExit.addClass('active');
   overlayShow();
 });
 
 iconExit.click(() => {
   overlayhidden();
   $('.header .wrapper').removeClass('active');
+  iconExit.removeClass('active');
 });
 
 $(window).scroll(() => {
@@ -37,18 +41,26 @@ $(window).scroll(() => {
 });
 
 $('.action .icon.up').click(() => {
-  let body = $('html, body');
   if (body.scrollTop() > 0) {
     body.stop().animate({ scrollTop: 0 }, 500, 'swing');
   }
 });
+
+if (body.width() < 992) {
+  $('.icon-down').click(function (e) {
+    e.preventDefault();
+    let menuChildren = $(this)
+      .parents('.menu-parent li')
+      .children('.menu-children');
+    menuChildren.slideToggle('slow');
+  });
+}
 
 $('.blog .slider').slick({
   slidesToShow: 3,
   slidesToScroll: 3,
   autoplay: true,
   autoplaySpeed: 5000,
-  // centerMode: true,
   centerPadding: 0,
   nextArrow: false,
   prevArrow: false,
