@@ -1444,18 +1444,7 @@ body {
           }
         }
 
-        .btn {
-          text-align: center;
-          line-height: 36px;
-          border-radius: $borderRadius;
-          @include font(14px, 'poppinsbold');
-          @include width(170px, 36px);
-          @include bgc($colorBtn2);
-
-          .icon-right {
-            margin-left: 12px;
-          }
-        }
+        @include cssBtn();
       }
 
       @include maxWidth(992px) {
@@ -1480,6 +1469,86 @@ body {
         .img {
           margin: 0 auto;
           @include width(290px);
+        }
+      }
+    }
+  }
+}
+
+//! nội dung trang cộng đồng
+.content-community {
+  @include cssPathContent();
+
+  @include maxWidth(568px) {
+    .banner .wrapper {
+      h1 {
+        font-size: 20px;
+      }
+
+      .path {
+        font-size: 12px;
+
+        span {
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+
+  .community {
+    .wrapper {
+      display: grid;
+      grid-template-columns: calc(44.45% - 75px) 55.55%;
+      gap: 75px;
+      color: $colorWrite;
+      padding: 92px 0 138px;
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        p {
+          text-align: justify;
+        }
+
+        @include cssBtn();
+
+        .btn {
+          width: 230px;
+        }
+      }
+
+      @include maxWidth(1200px) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      @include maxWidth(992px) {
+        grid-template-columns: auto;
+        // background: url('../img/img-map.png') no-repeat;
+        // background-position: center;
+        // position: relative;
+        // z-index: 1;
+
+        // &::after {
+        //   content: '';
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   bottom: 0;
+        //   right: 0;
+        //   @include bgc(#000);
+        //   opacity: 0.7;
+        //   z-index: 1;
+        // }
+
+        .btn {
+          margin-top: 20px;
+        }
+
+        .img {
+          display: none;
         }
       }
     }

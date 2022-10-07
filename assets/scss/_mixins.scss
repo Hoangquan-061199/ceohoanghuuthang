@@ -70,3 +70,18 @@
     }
   }
 }
+
+@mixin cssBtn() {
+  .btn {
+    text-align: center;
+    line-height: 36px;
+    border-radius: $borderRadius;
+    @include font(14px, 'poppinsbold');
+    @include width(170px, 36px);
+    @include bgc($colorBtn2);
+
+    .icon-right {
+      margin-left: 12px;
+    }
+  }
+}
