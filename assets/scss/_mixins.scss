@@ -29,3 +29,44 @@
     @content;
   }
 }
+
+@mixin cssPathContent() {
+  margin-top: $heightHeader;
+  .banner {
+    background: url('../img/bgc-lienhe-banner.png') no-repeat;
+    background-size: 100% 100%;
+    height: 255px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: $colorWrite;
+    display: flex;
+    align-items: center;
+
+    .wrapper {
+      margin: auto;
+
+      h1 {
+        text-align: center;
+        @include font(33px, 'poppinsbold');
+        margin-bottom: 17px;
+      }
+
+      .path {
+        font-size: 14px;
+
+        span {
+          position: relative;
+          padding: 0 13px;
+          &:not(:first-child)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            @include width(1px, 100%);
+            @include bgc($colorBorderLine);
+          }
+        }
+      }
+    }
+  }
+}
