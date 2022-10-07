@@ -891,54 +891,7 @@ body {
         }
       }
 
-      .video {
-        display: grid;
-        grid-template-columns: calc(60% - 16px) 40%;
-        gap: 16px;
-
-        .video-main {
-          iframe {
-            @include width(100%);
-          }
-        }
-
-        .video-lists {
-          li {
-            a {
-              display: grid;
-              grid-template-columns: 212px calc(100% - 212px - 22px);
-              gap: 22px;
-
-              .img {
-                @include width(auto, 120px);
-              }
-
-              .title {
-                font-size: 15px;
-              }
-
-              @include maxWidth(578px) {
-                grid-template-columns: 160px calc(100% - 160px - 12px);
-                gap: 12px;
-              }
-            }
-
-            &:not(:last-child) {
-              margin-bottom: 16px;
-            }
-          }
-        }
-
-        @include maxWidth(992px) {
-          grid-template-columns: auto;
-          gap: 0;
-
-          .video-main {
-            min-height: 387px;
-            margin-bottom: 16px;
-          }
-        }
-      }
+      @include cssVideo();
     }
   }
 
@@ -1560,81 +1513,36 @@ body {
   @include cssPathContent();
 
   .media-image {
-    .navbar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 48px;
-      margin-bottom: 51px;
-      border-bottom: 1px solid $colorBorderBottomHeader;
+    @include cssNavbar();
+    @include cssList();
+  }
+}
 
-      li {
-        width: 124px;
-        a {
-          text-align: center;
-        }
+//! nội dung trang media video
+.content-media-video {
+  @include cssPathContent();
 
-        &.active {
-          position: relative;
+  .media-video {
+    color: $colorWrite;
+    @include cssNavbar();
 
-          a {
-            color: $colorHover;
-          }
-
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -33px;
-            left: 0;
-            display: block;
-            @include width(100%, 20px);
-            background: url('../img/active-border.png') no-repeat;
-          }
-        }
+    .video-new {
+      h2 {
+        @include font(29.18px, 'poppinsbold');
+        margin: 0 0 30px;
       }
-    }
-
-    .list-image {
-      ul {
-        display: grid;
-        grid-template-columns: auto auto auto;
-        row-gap: 32px;
-        column-gap: 36px;
-
-        li {
-          @include bgc($bgcFooter);
-
-          .title {
-            padding: 23px 25px 16px;
-          }
-        }
-      }
+      @include cssVideo();
 
       @include maxWidth(1200px) {
         margin: 0 15px;
-
-        ul {
-          gap: 15px;
-        }
       }
+    }
 
-      @include maxWidth(768px) {
-        ul {
-          grid-template-columns: auto auto;
-        }
-      }
-
-      @include maxWidth(568px) {
-        ul {
-          grid-template-columns: auto;
-        }
-      }
-
-      @include cssBtn();
-
-      .btn {
-        margin: 36px auto 60px;
-        color: $colorWrite;
+    @include cssList();
+    .list-item {
+      h2 {
+        @include font(29.18px, 'poppinsbold');
+        margin: 58px 0 30px;
       }
     }
   }
