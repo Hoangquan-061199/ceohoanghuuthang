@@ -1737,6 +1737,40 @@ body {
   }
 }
 
+//! noi dung trang blog chi tiet
+.content-blog-details {
+  @include cssPathContent();
+
+  .blog-details {
+    @include cssNavbar();
+    color: $colorWrite;
+    padding-bottom: 106px;
+
+    .navbar {
+      li {
+        width: auto;
+        padding: 0 20px;
+      }
+
+      @include maxWidth(768px) {
+        overflow-x: auto;
+        justify-content: flex-start;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        li {
+          min-width: 220px;
+        }
+
+        li.active::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 .footer {
   @include bgc($bgcFooter);
 

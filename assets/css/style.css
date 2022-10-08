@@ -2237,6 +2237,107 @@ body {
   margin: 37px auto 0;
 }
 
+.content-blog-details {
+  margin-top: 91px;
+}
+.content-blog-details .banner {
+  background: url("../img/bgc-lienhe-banner.png") no-repeat;
+  background-size: 100% 100%;
+  height: 255px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.content-blog-details .banner .wrapper {
+  margin: auto;
+}
+.content-blog-details .banner .wrapper h1 {
+  text-align: center;
+  font-size: 33px;
+  font-family: "poppinsbold";
+  margin-bottom: 17px;
+}
+.content-blog-details .banner .wrapper .path {
+  font-size: 14px;
+}
+.content-blog-details .banner .wrapper .path span {
+  position: relative;
+  padding: 0 13px;
+}
+.content-blog-details .banner .wrapper .path span:not(:first-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: #b2b2b2;
+}
+@media (max-width: 568px) {
+  .content-blog-details .banner .wrapper h1 {
+    font-size: 20px;
+  }
+  .content-blog-details .banner .wrapper .path span {
+    padding: 0 5px;
+  }
+}
+.content-blog-details .blog-details {
+  color: #fff;
+  padding-bottom: 106px;
+}
+.content-blog-details .blog-details .navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  margin-bottom: 51px;
+  border-bottom: 1px solid #063e7f;
+}
+.content-blog-details .blog-details .navbar li {
+  width: 124px;
+}
+.content-blog-details .blog-details .navbar li a {
+  text-align: center;
+}
+.content-blog-details .blog-details .navbar li.active {
+  position: relative;
+}
+.content-blog-details .blog-details .navbar li.active a {
+  color: #f7ca44;
+}
+.content-blog-details .blog-details .navbar li.active::after {
+  content: "";
+  position: absolute;
+  bottom: -33px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 20px;
+  background: url("../img/active-border.png") no-repeat;
+  background-size: 100% 100%;
+}
+.content-blog-details .blog-details .navbar li {
+  width: auto;
+  padding: 0 20px;
+}
+@media (max-width: 768px) {
+  .content-blog-details .blog-details .navbar {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  .content-blog-details .blog-details .navbar::-webkit-scrollbar {
+    display: none;
+  }
+  .content-blog-details .blog-details .navbar li {
+    min-width: 220px;
+  }
+  .content-blog-details .blog-details .navbar li.active::after {
+    display: none;
+  }
+}
+
 .footer {
   background-color: #0d1f4d;
 }
