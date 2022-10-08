@@ -67,6 +67,18 @@
           }
         }
       }
+
+      @include maxWidth(568px) {
+        h1 {
+          font-size: 20px;
+        }
+
+        .path {
+          span {
+            padding: 0 5px;
+          }
+        }
+      }
     }
   }
 }
@@ -117,6 +129,7 @@
           display: block;
           @include width(100%, 20px);
           background: url('../img/active-border.png') no-repeat;
+          background-size: 100% 100%;
         }
       }
     }

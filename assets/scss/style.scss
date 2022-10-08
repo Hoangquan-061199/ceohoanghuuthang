@@ -1548,6 +1548,101 @@ body {
   }
 }
 
+//! nội dung trang thu ngo cua ceo
+.content-letter {
+  @include cssPathContent();
+
+  .letter {
+    @include cssNavbar();
+    color: $colorWrite;
+    padding-bottom: 106px;
+
+    .navbar {
+      li {
+        width: 190px;
+      }
+
+      @include maxWidth(768px) {
+        overflow-x: auto;
+        justify-content: flex-start;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        li {
+          min-width: 190px;
+        }
+
+        li.active::after {
+          display: none;
+        }
+      }
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      background: url('../img/bgc-thungo.png') no-repeat;
+      background-position: right center;
+
+      @include maxWidth(1200px) {
+        padding: 0 15px;
+      }
+
+      h2 {
+        padding: 0 0 26px;
+        @include font(29.18px, 'poppinsbold');
+      }
+
+      .dear {
+        @include width(152px, 62px);
+      }
+
+      .desc {
+        font-size: 15px;
+        padding: 12px 0 62px 0;
+        margin-bottom: 20px;
+        width: 54%;
+        position: relative;
+        p {
+          text-align: justify;
+          margin-bottom: 20px;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 7px;
+          width: 55px;
+          height: 2px;
+          @include bgc($colorBorderLine);
+        }
+
+        @include maxWidth(768px) {
+          width: 70%;
+        }
+
+        @include maxWidth(568px) {
+          width: 100%;
+        }
+      }
+
+      .author {
+        padding-left: 7px;
+        .name {
+          @include font(17.47px, 'poppinsbold');
+          color: $colorBorder;
+          margin-bottom: 12px;
+        }
+        .title {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
+
 .footer {
   @include bgc($bgcFooter);
 
