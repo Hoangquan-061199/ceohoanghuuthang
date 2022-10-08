@@ -112,3 +112,30 @@ $('.slider-nav').slick({
     },
   ],
 });
+
+$('.content-blog-edu .blog-edu .slider').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: false,
+  autoplaySpeed: 5000,
+  centerPadding: 0,
+  variableWidth: true,
+  dots: false,
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        variableWidth: false,
+      },
+    },
+  ],
+});

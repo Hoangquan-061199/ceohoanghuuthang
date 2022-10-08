@@ -232,3 +232,25 @@
     }
   }
 }
+
+@mixin cssItemBlockLside() {
+  padding: 37px 20px 35px 20px;
+  @include font(15px, 'poppins');
+
+  .title {
+    @include font(17px, 'poppinsbold');
+    margin-bottom: 18px;
+    height: 42px;
+    overflow-y: hidden;
+  }
+
+  .desc {
+    margin-bottom: 30px;
+    height: 40px;
+    overflow-y: hidden;
+  }
+
+  .show-details a {
+    color: $colorBorder;
+  }
+}

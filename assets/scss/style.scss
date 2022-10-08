@@ -770,27 +770,8 @@ body {
           .img {
             @include width(100%, 207px);
           }
-
           .item-block {
-            padding: 37px 20px 35px 20px;
-            @include font(15px, 'poppins');
-
-            .title {
-              @include font(17px, 'poppinsbold');
-              margin-bottom: 18px;
-              height: 42px;
-              overflow-y: hidden;
-            }
-
-            .desc {
-              margin-bottom: 30px;
-              height: 40px;
-              overflow-y: hidden;
-            }
-
-            .show-details a {
-              color: $colorBorder;
-            }
+            @include cssItemBlockLside();
           }
         }
 
@@ -1637,6 +1618,119 @@ body {
         }
         .title {
           font-size: 17px;
+        }
+      }
+    }
+  }
+}
+
+//! noi dung trang blog giao duc
+.content-blog-edu {
+  @include cssPathContent();
+
+  .blog-edu {
+    @include cssNavbar();
+    color: $colorWrite;
+    padding-bottom: 106px;
+
+    .navbar {
+      li {
+        width: auto;
+        padding: 0 20px;
+      }
+
+      @include maxWidth(768px) {
+        overflow-x: auto;
+        justify-content: flex-start;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        li {
+          min-width: 220px;
+        }
+
+        li.active::after {
+          display: none;
+        }
+      }
+    }
+
+    .wrapper {
+      .slider {
+        @include maxWidth(1300px) {
+          margin: 0 25px;
+        }
+        .item {
+          margin: 0 18px;
+          border-radius: $borderRadius;
+          overflow: hidden;
+          position: relative;
+          border: 1px solid $colorBorderLine;
+          .img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            text-transform: uppercase;
+            @include font(17px, 'poppinsbold');
+            @include maxWidth(568px) {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+
+      .list-blog {
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+          margin: 50px 0;
+          @include font(33px, 'poppinsbold');
+          text-transform: uppercase;
+          text-align: center;
+          span {
+            display: block;
+            color: $colorHover;
+          }
+        }
+
+        ul {
+          display: grid;
+          grid-template-columns: auto auto auto;
+          gap: 34px;
+          .item {
+            @include bgc($colorItemSlide);
+            .item-block {
+              @include cssItemBlockLside();
+            }
+          }
+
+          @include maxWidth(1200px) {
+            margin: 0 15px;
+          }
+
+          @include maxWidth(992px) {
+            grid-template-columns: auto auto;
+            gap: 15px;
+          }
+
+          @include maxWidth(768px) {
+            grid-template-columns: auto;
+            gap: 15px;
+          }
+        }
+        @include cssBtn();
+        .btn {
+          margin: 37px auto 0;
         }
       }
     }
