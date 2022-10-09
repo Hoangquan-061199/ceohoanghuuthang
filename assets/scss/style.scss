@@ -1768,6 +1768,152 @@ body {
         }
       }
     }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 68% calc(32% - 52px);
+      gap: 52px;
+
+      .block-left {
+        .title {
+          h3 {
+            font-size: 15px;
+            color: $colorBtn2;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+          }
+
+          h2 {
+            @include font(28px, 'poppinsbold');
+            margin-bottom: 26px;
+          }
+
+          .action-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+
+            .icon-clock {
+              @include width(18px);
+              margin-right: 10px;
+            }
+
+            .date {
+              margin-right: 28px;
+            }
+
+            .social {
+              display: flex;
+              .icon {
+                margin-right: 12px;
+                @include width(30px);
+              }
+            }
+          }
+        }
+
+        .desc {
+          h3 {
+            @include font(17px, 'poppinsbold');
+            margin-bottom: 20px;
+          }
+
+          p {
+            font-size: 15px;
+            margin-bottom: 20px;
+          }
+
+          .image {
+            margin-bottom: 20px;
+          }
+        }
+
+        .other-blog {
+          padding-top: 25px;
+          margin-top: 54px;
+          border-top: 1px solid $colorBorderLine;
+
+          h3 {
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            @include font(21px, 'poppinsbold');
+          }
+
+          ul {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 26px;
+
+            li {
+              .title {
+                margin-top: 17px;
+              }
+            }
+          }
+        }
+      }
+
+      .block-right {
+        h3 {
+          @include font(21px, 'poppinsbold');
+        }
+
+        ul {
+          li {
+            margin-bottom: 18px;
+
+            a {
+              display: flex;
+              font-size: 15px;
+
+              .img {
+                margin-right: 17px;
+                border-radius: $borderRadius;
+                border: 1px solid $colorWrite;
+                overflow: hidden;
+              }
+            }
+          }
+        }
+
+        .img-sologan img {
+          margin-top: 12px;
+          border-radius: $borderRadius;
+          overflow: hidden;
+        }
+      }
+
+      @include maxWidth(1200px) {
+        margin: 0 15px;
+      }
+
+      @include maxWidth(992px) {
+        grid-template-columns: auto;
+        gap: 0;
+
+        .block-left {
+          .other-blog {
+            ul {
+              grid-template-columns: auto auto;
+              gap: 15px;
+
+              @include maxWidth(568px) {
+                grid-template-columns: auto;
+                gap: 20px;
+              }
+            }
+          }
+        }
+
+        .block-right {
+          margin-top: 30px;
+
+          h3 {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
   }
 }
 
