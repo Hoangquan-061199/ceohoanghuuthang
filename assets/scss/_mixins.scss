@@ -254,3 +254,256 @@
     color: $colorBorder;
   }
 }
+
+@mixin cssInfo() {
+  color: $colorWrite;
+
+  .name {
+    @include font(33.24px, 'poppinsbold');
+  }
+
+  .title {
+    margin-top: 20px;
+    font-size: 28.32px;
+    color: $colorBorder;
+  }
+
+  .desc {
+    margin-top: 43px;
+    font-size: 16px;
+    max-width: 368px;
+  }
+
+  .social {
+    margin-top: 121px;
+
+    .social-block {
+      display: flex;
+
+      .item {
+        margin: 20px 10px 0 0;
+        @include width(37px);
+      }
+    }
+  }
+}
+
+@mixin cssMaxim() {
+  position: absolute;
+  left: -230px;
+  bottom: 0;
+  @include width(295px);
+  @include bgc($colorMaxim);
+  color: $colorWrite;
+  border-radius: $borderRadiusCircle;
+  padding: 38px 45px 0;
+
+  .icon {
+    margin: 0 auto 22px;
+    @include width(67px, 50px);
+  }
+
+  .text {
+    @include font(19px, 'Times New Roman');
+  }
+
+  @include maxWidth(992px) {
+    display: none;
+  }
+}
+
+@mixin cssBgcShareMe() {
+  background: url('../img/bg-share-me.png');
+  background-size: 100% 100%;
+  padding: 46px 15px;
+}
+
+@mixin cssShareMe() {
+  @include cssBgcShareMe();
+  position: relative;
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 10px));
+    gap: 20px;
+    color: $colorWrite;
+    @include maxWidth(992px) {
+      grid-template-columns: auto;
+    }
+
+    .block-avt {
+      @include width(496px);
+      position: relative;
+      margin: 0 auto;
+
+      .avt {
+        width: 308px;
+        position: absolute;
+        right: 0;
+        top: -5px;
+      }
+
+      .text {
+        position: absolute;
+        top: 33px;
+        left: 37px;
+        width: 175px;
+
+        .icon-maxim {
+          @include width(69px);
+          margin-bottom: 25px;
+        }
+
+        .desc {
+          @include font(20px, 'poppinsbold');
+          padding-bottom: 20px;
+          padding-left: 5px;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 29px;
+            height: 2px;
+            @include bgc($colorBorder);
+            @include maxWidth(992px) {
+              width: 60px;
+            }
+          }
+        }
+
+        .info {
+          margin-top: 17px;
+          padding-left: 5px;
+
+          .name {
+            @include font(17.12px, 'poppinsbold');
+            color: $colorBorder;
+          }
+
+          .title {
+            margin-top: 8px;
+            @include font(14.58px, 'poppins');
+          }
+        }
+      }
+
+      @include maxWidth(578px) {
+        @include width(300px);
+
+        .avt {
+          width: 187px;
+        }
+
+        .text {
+          left: 0;
+          width: 140px;
+          padding: 5px 0 0 15px;
+
+          .icon-maxim {
+            @include width(40px);
+            margin-bottom: 10px;
+          }
+
+          .desc {
+            @include font(13px, 'poppinsbold');
+            padding-bottom: 10px;
+
+            &::after {
+              margin-left: 5px;
+            }
+          }
+
+          .info {
+            margin-top: 10px;
+
+            .name {
+              @include font(13px, 'poppinsbold');
+            }
+
+            .title {
+              margin-top: 4px;
+              @include font(9px, 'poppins');
+            }
+          }
+        }
+      }
+    }
+
+    .share-content {
+      h3 {
+        @include font(29px, 'poppinsbold');
+        margin-bottom: 39px;
+      }
+      .item {
+        display: grid;
+        grid-template-columns: 81px auto;
+
+        .icon {
+          @include width(59px);
+        }
+
+        .title {
+          @include font(22px, 'poppinsbold');
+          color: $colorBorder;
+          margin-bottom: 11px;
+        }
+
+        .desc p:first-child {
+          margin-bottom: 22px;
+        }
+
+        &:not(:first-child) {
+          margin-top: 34px;
+        }
+      }
+    }
+  }
+}
+
+@mixin cssH1() {
+  @include font(29.18px, 'poppinsbold');
+  text-transform: uppercase;
+}
+
+@mixin cssH2() {
+  @include font(48px, 'shelia');
+  font-weight: 300;
+  color: $colorBtn2;
+  padding-bottom: 10px;
+}
+
+@mixin cssAvatCeo() {
+  margin-top: 67px;
+  position: relative;
+
+  .avt-img {
+    @include width(494px);
+    border-radius: $borderRadiusCircle;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(225, 225, 225, 0.9);
+
+    @include maxWidth(578px) {
+      @include width(290px);
+    }
+
+    img {
+      object-fit: none;
+      width: auto;
+      height: auto;
+      transform: translateX(-20%);
+
+      @include maxWidth(578px) {
+        @include width(100%);
+        transform: translateX(0);
+        object-fit: cover;
+      }
+    }
+  }
+
+  .maxim {
+    @include cssMaxim();
+  }
+}

@@ -6,6 +6,14 @@
   font-family: 'poppins';
   src: url('../fonts/SVN-POPPINS-REGULAR.TTF');
 }
+@font-face {
+  font-family: 'poppinslight';
+  src: url('../fonts/SVN-POPPINS-LIGHT.TTF');
+}
+@font-face {
+  font-family: 'shelia';
+  src: url('../fonts/shelia-vnf-regular.ttf');
+}
 
 @import './variables';
 @import './mixins';
@@ -357,89 +365,11 @@ body {
       }
 
       .info {
-        color: $colorWrite;
-
-        .name {
-          @include font(33.24px, 'poppinsbold');
-        }
-
-        .title {
-          margin-top: 20px;
-          font-size: 28.32px;
-          color: $colorBorder;
-        }
-
-        .desc {
-          margin-top: 43px;
-          font-size: 16px;
-          max-width: 368px;
-        }
-
-        .social {
-          margin-top: 121px;
-
-          .social-block {
-            display: flex;
-
-            .item {
-              margin: 20px 10px 0 0;
-              @include width(37px);
-            }
-          }
-        }
+        @include cssInfo();
       }
 
       .avt {
-        margin-top: 67px;
-        position: relative;
-
-        .avt-img {
-          @include width(494px);
-          border-radius: $borderRadiusCircle;
-          overflow: hidden;
-          box-shadow: 0 0 10px rgba(225, 225, 225, 0.9);
-
-          @include maxWidth(578px) {
-            @include width(290px);
-          }
-
-          img {
-            object-fit: none;
-            width: auto;
-            height: auto;
-            transform: translateX(-20%);
-
-            @include maxWidth(578px) {
-              @include width(100%);
-              transform: translateX(0);
-              object-fit: cover;
-            }
-          }
-        }
-
-        .maxim {
-          position: absolute;
-          left: -230px;
-          bottom: 0;
-          @include width(295px);
-          @include bgc($colorMaxim);
-          color: $colorWrite;
-          border-radius: $borderRadiusCircle;
-          padding: 38px 45px 0;
-
-          .icon {
-            margin: 0 auto 22px;
-            @include width(67px, 50px);
-          }
-
-          .text {
-            @include font(19px, 'Times New Roman');
-          }
-
-          @include maxWidth(992px) {
-            display: none;
-          }
-        }
+        @include cssAvatCeo();
       }
 
       @include maxWidth(992px) {
@@ -473,12 +403,15 @@ body {
         }
       }
     }
+  }
 
-    .question {
+  .info-author {
+    margin: 52px 0;
+    .title {
       color: $colorWrite;
       @include font(29.18px, 'poppinsbold');
       text-align: center;
-      margin-top: 100px;
+      margin-bottom: 54px;
 
       @include maxWidth(992px) {
         font-size: 24px;
@@ -488,10 +421,7 @@ body {
         font-size: 16px;
       }
     }
-  }
 
-  .info-author {
-    margin: 52px 0;
     .wrapper {
       display: flex;
       color: $colorWrite;
@@ -582,153 +512,7 @@ body {
   }
 
   .share-me {
-    background: url('../img/bg-share-me.png');
-    background-size: 100% 100%;
-    padding: 46px 15px;
-    position: relative;
-
-    .wrapper {
-      display: grid;
-      grid-template-columns: repeat(2, calc(50% - 10px));
-      gap: 20px;
-      color: $colorWrite;
-      @include maxWidth(992px) {
-        grid-template-columns: auto;
-      }
-
-      .block-avt {
-        background: url('../img/bgc-avt.png') no-repeat;
-        @include width(496px);
-        border-radius: $borderRadiusCircle;
-        border: 3px solid $colorBorder;
-        position: relative;
-        margin: 0 auto;
-
-        .avt {
-          width: 308px;
-          position: absolute;
-          right: 0;
-          top: -5px;
-        }
-
-        .text {
-          position: absolute;
-          top: 33px;
-          left: 37px;
-          width: 175px;
-
-          .icon-maxim {
-            @include width(69px);
-            margin-bottom: 25px;
-          }
-
-          .desc {
-            @include font(20px, 'poppinsbold');
-            padding-bottom: 20px;
-            padding-left: 5px;
-            position: relative;
-
-            &::after {
-              content: '';
-              position: absolute;
-              left: 0;
-              bottom: -2px;
-              width: 29px;
-              height: 2px;
-              @include bgc($colorBorder);
-              @include maxWidth(992px) {
-                width: 60px;
-              }
-            }
-          }
-
-          .info {
-            margin-top: 17px;
-            padding-left: 5px;
-
-            .name {
-              @include font(17.12px, 'poppinsbold');
-              color: $colorBorder;
-            }
-
-            .title {
-              margin-top: 8px;
-              @include font(14.58px, 'poppins');
-            }
-          }
-        }
-
-        @include maxWidth(578px) {
-          @include width(300px);
-
-          .avt {
-            width: 187px;
-          }
-
-          .text {
-            left: 0;
-            width: 140px;
-            padding: 5px 0 0 15px;
-
-            .icon-maxim {
-              @include width(40px);
-              margin-bottom: 10px;
-            }
-
-            .desc {
-              @include font(13px, 'poppinsbold');
-              padding-bottom: 10px;
-
-              &::after {
-                margin-left: 5px;
-              }
-            }
-
-            .info {
-              margin-top: 10px;
-
-              .name {
-                @include font(13px, 'poppinsbold');
-              }
-
-              .title {
-                margin-top: 4px;
-                @include font(9px, 'poppins');
-              }
-            }
-          }
-        }
-      }
-
-      .share-content {
-        h3 {
-          @include font(29px, 'poppinsbold');
-          margin-bottom: 39px;
-        }
-        .item {
-          display: grid;
-          grid-template-columns: 81px auto;
-
-          .icon {
-            @include width(59px);
-          }
-
-          .title {
-            @include font(22px, 'poppinsbold');
-            color: $colorBorder;
-            margin-bottom: 11px;
-          }
-
-          .desc p:first-child {
-            margin-bottom: 22px;
-          }
-
-          &:not(:first-child) {
-            margin-top: 34px;
-          }
-        }
-      }
-    }
+    @include cssShareMe();
   }
 
   .blog {
@@ -1570,13 +1354,13 @@ body {
         padding: 0 15px;
       }
 
-      h2 {
+      h1 {
         padding: 0 0 26px;
-        @include font(29.18px, 'poppinsbold');
+        @include cssH1();
       }
 
-      .dear {
-        @include width(152px, 62px);
+      h2 {
+        @include cssH2();
       }
 
       .desc {
@@ -1912,6 +1696,299 @@ body {
             margin-bottom: 20px;
           }
         }
+      }
+    }
+  }
+}
+
+//! nội dung trang giới thiệu
+.content-introduce {
+  @include cssPathContent();
+
+  .introduce-details {
+    @include cssNavbar();
+    color: $colorWrite;
+
+    .navbar {
+      margin: 0;
+      li {
+        width: auto;
+        padding: 0 20px;
+      }
+
+      @include maxWidth(768px) {
+        overflow-x: auto;
+        justify-content: flex-start;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        li {
+          min-width: 220px;
+        }
+
+        li.active::after {
+          display: none;
+        }
+      }
+    }
+
+    .intro {
+      position: relative;
+      padding-top: 110px;
+      background: url('../img/bgc-intro.png') no-repeat;
+      background-size: 100%;
+      height: 717px;
+
+      .info {
+        @include cssInfo();
+        .social {
+          margin-top: 63px;
+        }
+      }
+      .maxim {
+        @include cssMaxim();
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      @include minWidth(993px) {
+        .avt {
+          display: none;
+        }
+      }
+
+      @include maxWidth(1200px) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      @include maxWidth(992px) {
+        background: url('../img/bgc-banner1.png') no-repeat;
+        background-size: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        height: auto;
+        .avt {
+          display: block;
+          @include cssAvatCeo();
+        }
+
+        .info {
+          text-align: center;
+          padding: 30px;
+        }
+      }
+    }
+
+    .share-me {
+      display: none;
+      @include cssShareMe();
+      background: linear-gradient(#070d2d, #0a1f43);
+      background-size: 100% 100%;
+    }
+
+    .heart-letter {
+      display: none;
+      background: url('../img/bgc-tuotho.png') no-repeat;
+      background-size: 100% 100%;
+      padding: 60px 0 150px;
+
+      text-align: center;
+      h1 {
+        @include cssH1();
+      }
+      h2 {
+        @include cssH2();
+      }
+
+      .title {
+        margin: 22px auto 64px;
+        width: 60%;
+        font-size: 18px;
+      }
+      .desc {
+        text-align: justify;
+        font-size: 15px;
+        column-count: 3;
+        gap: 60px;
+      }
+    }
+
+    .block-1 {
+      display: none;
+      background: url('../img/bgc-thungo.png') right center no-repeat;
+      background-size: 50% 100%;
+      padding-bottom: 100px;
+      h1 {
+        @include cssH1();
+      }
+
+      h2 {
+        @include cssH2();
+      }
+      .desc {
+        p {
+          margin-top: 25px;
+          font-size: 15px;
+          width: 60%;
+        }
+      }
+    }
+
+    .block-2 {
+      display: none;
+      padding: 47px 0 70px;
+      background: linear-gradient(#070d2d, #0b2a50, #081334);
+      .wrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 448px;
+        position: relative;
+
+        .img {
+          position: absolute;
+          top: 0;
+          left: -35px;
+        }
+        .text {
+          width: 50%;
+
+          h1 {
+            @include cssH1();
+          }
+
+          h2 {
+            @include cssH2();
+            text-align: center;
+            margin-bottom: 22px;
+          }
+          .desc {
+            p {
+              margin-bottom: 28px;
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+
+    .startup-four-no {
+      display: none;
+      background: url('../img/bgc-startup.png') no-repeat;
+      background-size: 100% 100%;
+      padding: 82px 0 0;
+      .startup-block-1 {
+        text-align: center;
+
+        h1 {
+          @include cssH1();
+          margin-bottom: 27px;
+        }
+        .desc p {
+          font-size: 15px;
+        }
+
+        .img-border {
+          @include width(50%, 3px);
+          margin: 50px auto 60px;
+        }
+      }
+
+      .startup-block-2 {
+        display: grid;
+        grid-template-columns: 50% calc(50% - 70px);
+        gap: 70px;
+        height: 800px;
+
+        .text p {
+          margin-bottom: 23px;
+          text-align: justify;
+        }
+
+        .img {
+          height: 546px;
+        }
+      }
+
+      .startup-block-3 {
+        column-count: 2;
+        column-gap: 66px;
+        height: 695px;
+        .title {
+          margin: 0 5px 44px;
+          padding-left: 24px;
+          border-left: 6px solid $colorBorder;
+          h1 {
+            @include cssH1();
+            margin-bottom: 12px;
+          }
+
+          h2 {
+            span {
+              display: block;
+              color: $colorBorder;
+              @include font(26px, 'poppinslight');
+              text-transform: uppercase;
+
+              strong {
+                @include font(26px, 'poppinsbold');
+              }
+            }
+          }
+        }
+
+        .img {
+          height: 270px;
+          margin-bottom: 36px;
+        }
+
+        .desc {
+          column-count: 1;
+          height: 100%;
+
+          p {
+            margin-bottom: 20px;
+            text-align: justify;
+          }
+        }
+      }
+    }
+
+    .spotlight {
+      display: none;
+      position: relative;
+      height: 849px;
+      padding-top: 76px;
+      background: url('../img/bgc-spotlight.png') no-repeat;
+      background-size: 100%;
+
+      .block-left {
+        width: 53%;
+
+        h1 {
+          @include cssH1();
+          margin-bottom: 45px;
+        }
+
+        .desc {
+          p {
+            font-size: 15px;
+            margin-bottom: 30px;
+            text-align: justify;
+          }
+        }
+      }
+
+      .img {
+        position: absolute;
+        top: 61px;
+        right: 0;
+
+        display: block;
       }
     }
   }
