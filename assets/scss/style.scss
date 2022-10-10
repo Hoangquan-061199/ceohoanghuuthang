@@ -1772,30 +1772,48 @@ body {
         padding-top: 20px;
         height: auto;
         .avt {
-          display: block;
+          display: flex;
           @include cssAvatCeo();
+
+          .avt-img {
+            margin: 0 auto;
+          }
         }
 
         .info {
           text-align: center;
           padding: 30px;
+
+          @include maxWidth(568px) {
+            .name {
+              font-size: 24px;
+            }
+
+            .title {
+              margin-top: 12px;
+              font-size: 20px;
+            }
+          }
+
+          .social {
+            .social-block {
+              justify-content: center;
+            }
+          }
         }
       }
     }
 
     .share-me {
-      display: none;
       @include cssShareMe();
       background: linear-gradient(#070d2d, #0a1f43);
       background-size: 100% 100%;
     }
 
     .heart-letter {
-      display: none;
       background: url('../img/bgc-tuotho.png') no-repeat;
       background-size: 100% 100%;
       padding: 60px 0 150px;
-
       text-align: center;
       h1 {
         @include cssH1();
@@ -1815,12 +1833,44 @@ body {
         column-count: 3;
         gap: 60px;
       }
+
+      @include maxWidth(1200px) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      @include maxWidth(768px) {
+        .title {
+          width: 80%;
+        }
+        .desc {
+          column-count: 2;
+          column-gap: 15px;
+        }
+      }
+
+      @include maxWidth(568px) {
+        h1 {
+          font-size: 24px;
+        }
+
+        h2 {
+          font-size: 28px;
+        }
+
+        .title {
+          width: 100%;
+        }
+        .desc {
+          column-count: 1;
+          column-gap: 0;
+        }
+      }
     }
 
     .block-1 {
-      display: none;
       background: url('../img/bgc-thungo.png') right center no-repeat;
-      background-size: 50% 100%;
+      background-size: 50%;
       padding-bottom: 100px;
       h1 {
         @include cssH1();
@@ -1833,13 +1883,39 @@ body {
         p {
           margin-top: 25px;
           font-size: 15px;
+          text-align: justify;
           width: 60%;
         }
+      }
+
+      @include maxWidth(1200px) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      @include maxWidth(992px) {
+        .desc {
+          p {
+            width: 100%;
+          }
+        }
+      }
+
+      @include maxWidth(768px) {
+        h2 {
+          font-size: 25px;
+        }
+      }
+
+      @include maxWidth(568px) {
+        h2 {
+          font-size: 20px;
+        }
+        background: none;
       }
     }
 
     .block-2 {
-      display: none;
       padding: 47px 0 70px;
       background: linear-gradient(#070d2d, #0b2a50, #081334);
       .wrapper {
@@ -1849,13 +1925,9 @@ body {
         height: 448px;
         position: relative;
 
-        .img {
-          position: absolute;
-          top: 0;
-          left: -35px;
-        }
         .text {
           width: 50%;
+          text-align: justify;
 
           h1 {
             @include cssH1();
@@ -1874,13 +1946,50 @@ body {
           }
         }
       }
+
+      @include minWidth(1200px) {
+        .img {
+          position: absolute;
+          top: 0;
+          left: -35px;
+        }
+      }
+
+      @include maxWidth(1200px) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      @include maxWidth(992px) {
+        .text {
+          width: 60%;
+        }
+      }
+
+      @include maxWidth(768px) {
+        .wrapper {
+          .img {
+            display: none;
+          }
+          .text {
+            width: 100%;
+
+            h2 {
+              text-align: left;
+            }
+          }
+        }
+      }
     }
 
     .startup-four-no {
-      display: none;
       background: url('../img/bgc-startup.png') no-repeat;
       background-size: 100% 100%;
       padding: 82px 0 0;
+      @include maxWidth(1200px) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
       .startup-block-1 {
         text-align: center;
 
@@ -1895,6 +2004,15 @@ body {
         .img-border {
           @include width(50%, 3px);
           margin: 50px auto 60px;
+        }
+        @include maxWidth(568px) {
+          text-align: justify;
+          h1 {
+            font-size: 20px;
+          }
+          .img-border {
+            width: 80%;
+          }
         }
       }
 
@@ -1912,12 +2030,22 @@ body {
         .img {
           height: 546px;
         }
+
+        @include maxWidth(992px) {
+          display: flex;
+          flex-direction: column-reverse;
+          height: auto;
+
+          .img {
+            height: 80%;
+          }
+        }
       }
 
       .startup-block-3 {
         column-count: 2;
         column-gap: 66px;
-        height: 695px;
+        padding-bottom: 88px;
         .title {
           margin: 0 5px 44px;
           padding-left: 24px;
@@ -1955,40 +2083,79 @@ body {
             text-align: justify;
           }
         }
+
+        @include maxWidth(992px) {
+          margin-top: 30px;
+          column-gap: 30px;
+        }
+
+        @include maxWidth(768px) {
+          column-count: 1;
+
+          .title {
+            h2 {
+              span {
+                font-size: 16px;
+
+                strong {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+
+          .img {
+            height: auto;
+          }
+        }
       }
     }
 
     .spotlight {
-      display: none;
       position: relative;
-      height: 849px;
       padding-top: 76px;
       background: url('../img/bgc-spotlight.png') no-repeat;
-      background-size: 100%;
+      background-size: 100% 100%;
+      .wrapper {
+        display: flex;
+        justify-content: space-between;
 
-      .block-left {
-        width: 53%;
+        .block-left {
+          width: 48%;
+          margin-right: 47px;
+          h1 {
+            @include cssH1();
+            margin-bottom: 45px;
+          }
 
-        h1 {
-          @include cssH1();
-          margin-bottom: 45px;
-        }
-
-        .desc {
-          p {
-            font-size: 15px;
-            margin-bottom: 30px;
-            text-align: justify;
+          .desc {
+            p {
+              font-size: 15px;
+              margin-bottom: 30px;
+              text-align: justify;
+            }
           }
         }
-      }
 
-      .img {
-        position: absolute;
-        top: 61px;
-        right: 0;
+        .img {
+          display: block;
+        }
 
-        display: block;
+        @include maxWidth(1200px) {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        @include maxWidth(992px) {
+          .block-left {
+            width: 100%;
+            margin-right: 0;
+          }
+
+          .img {
+            display: none;
+          }
+        }
       }
     }
   }

@@ -436,6 +436,9 @@
       h3 {
         @include font(29px, 'poppinsbold');
         margin-bottom: 39px;
+        @include maxWidth(568px) {
+          font-size: 24px;
+        }
       }
       .item {
         display: grid;
@@ -466,6 +469,9 @@
 @mixin cssH1() {
   @include font(29.18px, 'poppinsbold');
   text-transform: uppercase;
+  @include maxWidth(568px) {
+    font-size: 24px;
+  }
 }
 
 @mixin cssH2() {
@@ -473,6 +479,10 @@
   font-weight: 300;
   color: $colorBtn2;
   padding-bottom: 10px;
+
+  @include maxWidth(568px) {
+    font-size: 25px;
+  }
 }
 
 @mixin cssAvatCeo() {
